@@ -22,29 +22,16 @@ RUN if [ $hvga -eq 1 ]; then \
     fi
 
 RUN apt install -y \
-  libcanberra-gtk-module \
-  libboost-chrono-dev \
-  python3.7 \
-  python3-pip \
-  python3-tk \
-  cmake \
-  && apt-get autoremove \
-  && apt-get clean \
-  && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+    libcanberra-gtk-module \
+    libboost-chrono-dev \
+    python3.7 \
+    python3-pip \
+    python3-tk \
+    cmake \
+    && apt-get autoremove \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
-RUN pip3 install \
-  scikit-build 
-
-
-RUN pip3 install \
-#  opencv-python  \
-  matplotlib \
-  jupyter
-
-RUN cd /usr/local/src/event-driven/build &&\
-	git checkout master && git pull &&\
-    cmake -DBUILD_HARDWAREIO=ON \
-          -DENABLE_atis3=ON \
-          -DVLIB_CLOCK_PERIOD_NS=1000 \
-          .. &&\
-    make -j `nproc` install
+RUN cd /usr/local/src/event-driven/build \
+    && cmake -DVLIB_CLOCK_PERIOD_NS=1000 . \
+    && make -j `nproc` install
