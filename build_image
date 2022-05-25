@@ -1,0 +1,1 @@
+docker build -t eventdrivenrobotics/atis-gen3:ev2-dev .
