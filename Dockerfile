@@ -1,4 +1,4 @@
-FROM eventdrivenrobotics/event-driven:bionic_yarp_v3.3.2_ed_v1.5
+FROM eventdrivenrobotics/event-driven:bionic_yarp_v3.3.2_ed_ev2-dev
 
 ARG hvga=0
 
