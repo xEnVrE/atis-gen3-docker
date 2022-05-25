@@ -7,10 +7,10 @@ To use the ATIS3 cameras we need to have *metavision* (previously *Prophesee*) l
 ```console
 git clone -b v/bionic_3.3.2_ev2 https://github.com/xEnVrE/event-driven-docker
 cd event-driven-docker
-bash build image
+bash build_image
 ```
 
-```
+```console
 git clone -b v/bionic_3.3.2_ev2 https://github.com/xEnVrE/atis-gen3-docker
 cd atis-gen3-docker
 bash build_image
