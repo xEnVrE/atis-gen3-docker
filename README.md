@@ -2,17 +2,11 @@
 
 To use the ATIS3 cameras we need to have *metavision* (previously *Prophesee*) libraries installed. There are two versions of the libraries depending on if you are using VGA (events-only, latest library version) or HVGA camera (intensity image, library version 1.4).
 
-### Get the right docker image:
+### Build the docker image
 
-Grab the base image with all the right installs:
-
-*VGA*
-
-`docker pull eventdrivenrobotics/atis-gen3:latest`
- 
-*HVGA*
-
-`docker pull eventdrivenrobotics/atis-gen3:1.4`
+```console
+bash build_image
+```
 
 :warning: if you want to run docker without sudo you can give permission for your local user to run docker https://docs.docker.com/engine/install/linux-postinstall/
 
@@ -81,8 +75,3 @@ The recommended way to develop your own application is to mount a volume from yo
 Follow [instructions](https://github.com/robotology/event-driven/tree/master/documentation/example-module) to make a default application to read events in C++ using event-driven.
 
 Follow [instructions](https://github.com/robotology/event-driven/tree/master/documentation/example-module-py) to make a default application to read events in Python using event-driven.
-
-
-
-
-
