@@ -20,7 +20,9 @@ to enable the X11 forwarding on the host side.
 
 Then run a container with the right parameters:
 
-`docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --name <container_name> eventdrivenrobotics/atis-gen3:latest`
+```console
+docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --name <container_name> eventdrivenrobotics/atis-gen3:ev2-dev`
+```
 
 The meaning of the options are:
 * -it : runs the container in an interactive bash
@@ -29,8 +31,6 @@ The meaning of the options are:
 * -v /tmp/.X11-unix:/tmp/.X11-unix : mount the temporary configuration for x11 to use the same options as the host
 * -e DISPLAY=unix$DISPLAY : set the environment variable for X11 forwarding
 * --name : name your container so you remember it, if not specified docker will assign a random name that you will have to remember
-
-:warning: remember to use `..atis-gen3:1.4` if you are using the HVGA camera
 
 :bulb: use `--network host` if you want the docker to share the IP addresses with the host
 
@@ -66,7 +66,14 @@ To read events over YARP:
 2. start the atis-bridge `atis-bridge-sdk`
 3. open a second docker terminal
 3. check the port is open `yarp name list` should show `/atis3/AE:o` open.
-4. visualise the output on the `vFramer` using the `yarpmanager` application. Run the `yarpmanager`, double click the `atis3-vis` application, `run all`, and `connect all`. The camera output should be visualised.
+4. visualise the output on the `vFramer`
+```console
+vFramer --height 480 --width 640 --iso
+yarp connect /atis3/AE:o /vFramer/iso/AE:i fast_tcp
+```
+
+
+ppusing the `yarpmanager` application. Run the `yarpmanager`, double click the `atis3-vis` application, `run all`, and `connect all`. The camera output should be visualised.
 
 ### Developing you own application
 
